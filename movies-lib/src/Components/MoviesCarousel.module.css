@@ -1,0 +1,66 @@
+div.container_carousel {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: hidden;
+  position: relative;
+  margin-bottom: 60px;
+}
+
+div.carousel {
+  display: flex;
+  /* transform: translateX(-1325px); deslocamento correto para mostrar uma pagina com novos filmes */
+  transform: translateX(0px);
+  transition: 1s;
+}
+
+div.arrow_div_back,
+div.arrow_div_next {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  background: blue;
+  height: 100%;
+  width: 100px;
+  cursor: pointer;
+}
+
+span.arrow_back,
+span.arrow_next {
+  display: flex;
+  position: absolute;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.5); /* Cor de fundo com transparência */
+}
+
+div.arrow_div_next {
+  justify-content: end;
+  right: 0px;
+  background: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0)
+  ); /* Gradiente de preto para transparente da direita para a esquerda */
+}
+
+div.arrow_div_back {
+  left: 0px;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0)
+  ); /* Gradiente de preto para transparente da esquerda para a direita */
+}
+
+div.arrow_div_back svg,
+div.arrow_div_next svg {
+  width: 50px;
+  height: 50px;
+}
+
+div.arrow_div_back svg {
+  rotate: -90deg;
+}
+
+div.arrow_div_next svg {
+  rotate: 90deg;
+}
