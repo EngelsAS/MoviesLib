@@ -1,0 +1,44 @@
+div.card_container {
+  width: 200px;
+  margin-right: 21px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+div.card_container:hover {
+  opacity: 0.7;
+}
+
+div.card_film_infos {
+  height: 71px;
+  background-color: #1a1a1a;
+  margin-top: -7px;
+  padding: 13px 0px;
+  padding-left: 9px;
+}
+
+.card_film_infos h4 {
+  color: #fff;
+}
+
+.card_infos_rate {
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+}
+
+.card_infos_rate svg {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.card_infos_rate span {
+  color: #bfbfbf;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 3px;
+  margin-left: 2px;
+}

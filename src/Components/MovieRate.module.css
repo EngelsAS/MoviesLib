@@ -1,0 +1,14 @@
+.rate_div {
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+}
+
+.rate_div span {
+  color: #bfbfbf;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 3px;
+  margin-left: 2px;
+}
