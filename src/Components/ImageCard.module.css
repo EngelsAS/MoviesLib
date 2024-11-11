@@ -3,10 +3,7 @@ div.card_container {
   margin-right: 21px;
   cursor: pointer;
   transition: 0.3s;
-}
-
-div.card_container:hover {
-  opacity: 0.7;
+  position: relative;
 }
 
 div.card_film_infos {
@@ -15,6 +12,27 @@ div.card_film_infos {
   margin-top: -7px;
   padding: 13px 0px;
   padding-left: 9px;
+  position: relative;
+  z-index: 1;
+}
+
+.card_container:hover .card_actions {
+  bottom: 96px;
+}
+
+.card_actions {
+  background-color: rgba(26, 26, 26, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  backdrop-filter: blur(2px);
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 40px;
+  z-index: 0;
+  transition: all 0.2s;
 }
 
 .card_film_infos h4 {

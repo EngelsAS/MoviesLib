@@ -38,9 +38,56 @@ const createSession = async (requestToken) => {
   }
 };
 
+const returnAccountId = async (sessionId) => {
+  try {
+    const resp = await apiTMDB.get(`/3/account?session_id=${sessionId}`);
+    const id = resp.data.id;
+
+    return id;
+  } catch (error) {
+    console.log(error);
+    return undefined;
+  }
+};
+
+const addToWatchList = async (movieId) => {
+  try {
+    const resp = await apiTMDB.post(`/3/account/21129846/watchlist`, {
+      media_type: "movie",
+      media_id: movieId,
+      watchlist: true,
+    });
+
+    const data = resp.data;
+    console.log(data);
+
+    return data;
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+};
+
+const getWatchList = async () => {
+  try {
+    const resp = await apiTMDB.get(
+      "/3/account/21129846/watchlist/movies?language=en-US&page=1&sort_by=created_at.asc"
+    );
+    const data = resp.data;
+
+    return data;
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+};
+
 const UserService = {
   getRequestToken,
   createSession,
+  addToWatchList,
+  returnAccountId,
+  getWatchList,
 };
 
 export default UserService;

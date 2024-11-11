@@ -20,10 +20,6 @@ const Home = () => {
 
   return (
     <>
-      {/* <div style={{ border: "1px solid red" }}>
-        <div>teste</div>
-        <div>Teste</div>
-      </div> */}
       <MoviesCarousel
         movies={popularMovies}
         tituloCategoria={"Popular Movies"}
