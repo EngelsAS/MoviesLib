@@ -6,6 +6,8 @@ import Search from "./Pages/Search/Search";
 import Navbar from "./Components/Navbar";
 import { useSelector } from "react-redux";
 import Perfil from "./Pages/Perfil";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const user = useSelector((state) => state.user);
@@ -14,10 +16,11 @@ function App() {
     <>
       <BrowserRouter>
         <Navbar user={user} />
+        <ToastContainer theme="dark" draggable closeOnClick />
         <div id="corpo">
           <Routes>
             <Route element={<Home />} path="/" />
-            <Route element={<Movie />} path="/movie" />
+            <Route element={<Movie />} path="/movie/:id" />
             <Route element={<Search />} path="/search" />
             <Route element={<Perfil />} path="/perfil" />
           </Routes>

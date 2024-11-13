@@ -4,7 +4,13 @@ import styles from "./MoviesCarousel.module.css";
 import { Icon } from "@iconify/react";
 import Categoria from "./Categoria";
 
-const MoviesCarousel = ({ movies, tituloCategoria, subtituloCategoria }) => {
+const MoviesCarousel = ({
+  movies,
+  tituloCategoria,
+  subtituloCategoria,
+  toRemove,
+  removeFunction,
+}) => {
   const refCarousel = useRef();
   const [countCarousel, setCountCarousel] = useState(0);
   const currentTranslateValue = useRef(0);
@@ -41,7 +47,12 @@ const MoviesCarousel = ({ movies, tituloCategoria, subtituloCategoria }) => {
       <div className={styles.container_carousel}>
         <div className={styles.carousel} ref={refCarousel}>
           {movies.map((movie) => (
-            <ImageCard key={movie.id} movie={movie} />
+            <ImageCard
+              key={movie.id}
+              movie={movie}
+              toRemove={toRemove}
+              removeFunction={removeFunction}
+            />
           ))}
         </div>
         {countCarousel > 0 && (

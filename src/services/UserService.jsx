@@ -68,6 +68,24 @@ const addToWatchList = async (movieId) => {
   }
 };
 
+const removeFromWatchList = async (movieId) => {
+  try {
+    const resp = await apiTMDB.post(`/3/account/21129846/watchlist`, {
+      media_type: "movie",
+      media_id: movieId,
+      watchlist: false,
+    });
+
+    const data = resp.data;
+    console.log(data);
+
+    return data;
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+};
+
 const getWatchList = async () => {
   try {
     const resp = await apiTMDB.get(
@@ -86,6 +104,7 @@ const UserService = {
   getRequestToken,
   createSession,
   addToWatchList,
+  removeFromWatchList,
   returnAccountId,
   getWatchList,
 };

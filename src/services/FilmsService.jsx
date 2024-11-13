@@ -56,11 +56,23 @@ const getUpcomingMovies = async () => {
   }
 };
 
+const getMovieDetails = async (movieId) => {
+  try {
+    const resp = await apiTMDB.get(`3/movie/${movieId}`);
+    console.log(resp.data);
+    return resp.data;
+  } catch (error) {
+    console.log(error);
+    return undefined;
+  }
+};
+
 const FilmsService = {
   getTopRatedMovies,
   getPopularMovies,
   searchMovies,
   getUpcomingMovies,
+  getMovieDetails,
 };
 
 export default FilmsService;

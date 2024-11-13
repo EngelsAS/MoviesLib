@@ -1,9 +1,12 @@
 div.card_container {
   width: 200px;
   margin-right: 21px;
-  cursor: pointer;
   transition: 0.3s;
   position: relative;
+
+  & img {
+    cursor: pointer;
+  }
 }
 
 div.card_film_infos {
@@ -14,6 +17,15 @@ div.card_film_infos {
   padding-left: 9px;
   position: relative;
   z-index: 1;
+
+  & h4 {
+    cursor: pointer;
+    color: #fff;
+  }
+
+  & h4:hover {
+    text-decoration: underline;
+  }
 }
 
 .card_container:hover .card_actions {
@@ -33,10 +45,10 @@ div.card_film_infos {
   height: 40px;
   z-index: 0;
   transition: all 0.2s;
-}
 
-.card_film_infos h4 {
-  color: #fff;
+  & svg {
+    cursor: pointer;
+  }
 }
 
 .card_infos_rate {

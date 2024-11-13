@@ -25,6 +25,7 @@ const Home = () => {
         tituloCategoria={"Popular Movies"}
         subtituloCategoria={"What's been most popular lately?"}
       />
+
       <MoviesCarousel
         movies={topRatedMovies}
         tituloCategoria={"Top Rated Movies"}
