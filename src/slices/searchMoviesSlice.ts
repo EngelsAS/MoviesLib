@@ -1,7 +1,17 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import FilmsService from "../services/FilmsService";
+import { MovieType } from "../types/MovieType";
 
-const initialState = {
+interface PropsInitialState {
+  movies: MovieType[];
+  page: number;
+  total_pages: number;
+  total_results: number;
+  loading: boolean;
+  error: any;
+}
+
+const initialState: PropsInitialState = {
   movies: [],
   page: 0,
   total_pages: 0,
@@ -12,14 +22,14 @@ const initialState = {
 
 export const searchMovies = createAsyncThunk(
   "searchMovies/searchMovies",
-  async ({ query, page }, thunkAPI) => {
+  async ({ query, page }: { query: string; page: number }, thunkAPI) => {
     console.log(thunkAPI);
     console.log(page);
     console.log(query);
     try {
       const data = await FilmsService.searchMovies(query, page);
       return data;
-    } catch (error) {
+    } catch (error: any) {
       return thunkAPI.rejectWithValue(error.status_message);
     }
   }

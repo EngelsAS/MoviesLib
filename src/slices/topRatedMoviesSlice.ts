@@ -1,8 +1,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import FilmsService from "../services/FilmsService";
+import { MovieType } from "../types/MovieType";
+
+interface PropsInitialState {
+  page: number;
+  total_pages: number;
+  total_results: number;
+  movies: MovieType[];
+  loading: boolean;
+  error: any;
+}
 
 //Para configurar nosso slice precisamos criar um initial state
-const initialState = {
+const initialState: PropsInitialState = {
   page: 0,
   total_pages: 0,
   total_results: 0,
@@ -20,7 +30,7 @@ export const getTopRatedMovies = createAsyncThunk(
     try {
       const data = await FilmsService.getTopRatedMovies();
       return data;
-    } catch (error) {
+    } catch (error: any) {
       //rejeitando o valor com a thunkApi fazendo assim os extra reducers cairem corretamente no rejected
       return thunkAPI.rejectWithValue(error.status_message);
     }

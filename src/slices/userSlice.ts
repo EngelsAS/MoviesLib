@@ -1,7 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import UserService from "../services/UserService";
+import { MovieType } from "../types/MovieType";
 
-const initialState = {
+interface PropsInitialState {
+  sessionId: null | string;
+  filmesFavoritos: MovieType[];
+  error: any;
+  loading: boolean;
+}
+
+const initialState: PropsInitialState = {
   sessionId: null,
   filmesFavoritos: [],
   error: null,
@@ -11,29 +19,24 @@ const initialState = {
 export const loginUser = createAsyncThunk(
   "user/loginUser",
 
-  async (requestToken, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const userState = state.user;
-    console.log(userState);
-
+  async (requestToken: string, thunkAPI) => {
     try {
       const data = await UserService.createSession(requestToken);
       console.log(data);
       return data;
-    } catch (error) {
+    } catch (error: any) {
       return thunkAPI.rejectWithValue(error.status_message);
     }
   }
 );
 
 export const userSlice = createSlice({
-  name: "topRatedMovies",
+  name: "user",
   initialState,
   reducers: {
     logoutUser: (state) => {
       state.sessionId = null;
-      state.favoriteMovies = [];
-      state.status = "idle";
+      state.filmesFavoritos = [];
     },
   },
   extraReducers: (builder) => {

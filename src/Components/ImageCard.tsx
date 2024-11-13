@@ -10,8 +10,8 @@ import { RootState } from "../types/StoreTypes";
 
 interface IProps {
   movie: MovieType;
-  toRemove: boolean;
-  removeFunction: () => void;
+  toRemove?: boolean;
+  removeFunction?: () => void;
 }
 
 const ImageCard = ({ movie, toRemove, removeFunction }: IProps) => {

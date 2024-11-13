@@ -1,7 +1,17 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import FilmsService from "../services/FilmsService";
+import { MovieType } from "../types/MovieType";
 
-const initialState = {
+interface PropsInitialState {
+  page: number;
+  total_pages: number;
+  total_results: number;
+  movies: MovieType[];
+  loading: boolean;
+  error: any;
+}
+
+const initialState: PropsInitialState = {
   page: 0,
   total_pages: 0,
   total_results: 0,
@@ -16,7 +26,7 @@ export const getPopularMovies = createAsyncThunk(
     try {
       const data = await FilmsService.getPopularMovies();
       return data;
-    } catch (error) {
+    } catch (error: any) {
       return thunkAPI.rejectWithValue(error.status_message);
     }
   }
@@ -25,6 +35,7 @@ export const getPopularMovies = createAsyncThunk(
 export const popularMoviesSlice = createSlice({
   name: "popularMovies",
   initialState,
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getPopularMovies.pending, (state) => {

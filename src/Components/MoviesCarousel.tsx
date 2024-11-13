@@ -9,8 +9,8 @@ interface IProps {
   movies: MovieType[];
   tituloCategoria: string;
   subtituloCategoria?: string;
-  toRemove: boolean;
-  removeFunction: () => void;
+  toRemove?: boolean;
+  removeFunction?: () => void;
 }
 
 const MoviesCarousel = ({
