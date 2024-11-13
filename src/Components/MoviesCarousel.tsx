@@ -3,6 +3,15 @@ import ImageCard from "./ImageCard";
 import styles from "./MoviesCarousel.module.css";
 import { Icon } from "@iconify/react";
 import Categoria from "./Categoria";
+import { MovieType } from "../types/MovieType";
+
+interface IProps {
+  movies: MovieType[];
+  tituloCategoria: string;
+  subtituloCategoria?: string;
+  toRemove: boolean;
+  removeFunction: () => void;
+}
 
 const MoviesCarousel = ({
   movies,
@@ -10,12 +19,12 @@ const MoviesCarousel = ({
   subtituloCategoria,
   toRemove,
   removeFunction,
-}) => {
-  const refCarousel = useRef();
+}: IProps) => {
+  const refCarousel = useRef<HTMLDivElement | null>(null);
   const [countCarousel, setCountCarousel] = useState(0);
   const currentTranslateValue = useRef(0);
 
-  const handleCarousel = (acao) => {
+  const handleCarousel = (acao: "back" | "next") => {
     const restoMovies = movies.length % 6;
     const lengthCarousel =
       restoMovies !== 0 ? movies.length - restoMovies : movies.length;
@@ -23,10 +32,10 @@ const MoviesCarousel = ({
     if (acao === "next") {
       if (countCarousel < lengthCarousel) {
         currentTranslateValue.current += 1325;
-        refCarousel.current.style.transform = `translateX(-${currentTranslateValue.current}px)`;
+        refCarousel.current!.style.transform = `translateX(-${currentTranslateValue.current}px)`;
         setCountCarousel((prev) => prev + 6);
       } else {
-        refCarousel.current.style.transform = `translateX(0px)`;
+        refCarousel.current!.style.transform = `translateX(0px)`;
         currentTranslateValue.current = 0;
         setCountCarousel(0);
       }
@@ -35,7 +44,7 @@ const MoviesCarousel = ({
     if (acao === "back") {
       if (countCarousel > 0) {
         currentTranslateValue.current -= 1325;
-        refCarousel.current.style.transform = `translateX(-${currentTranslateValue.current}px)`;
+        refCarousel.current!.style.transform = `translateX(-${currentTranslateValue.current}px)`;
         setCountCarousel((prev) => prev - 6);
       }
     }

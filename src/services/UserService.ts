@@ -14,7 +14,7 @@ const getRequestToken = async () => {
   }
 };
 
-const createSession = async (requestToken) => {
+const createSession = async (requestToken: string) => {
   const options = {
     method: "POST",
     url: `https://api.themoviedb.org/3/authentication/session/new?api_key=${
@@ -38,7 +38,7 @@ const createSession = async (requestToken) => {
   }
 };
 
-const returnAccountId = async (sessionId) => {
+const returnAccountId = async (sessionId: string) => {
   try {
     const resp = await apiTMDB.get(`/3/account?session_id=${sessionId}`);
     const id = resp.data.id;
@@ -50,7 +50,7 @@ const returnAccountId = async (sessionId) => {
   }
 };
 
-const addToWatchList = async (movieId) => {
+const addToWatchList = async (movieId: number) => {
   try {
     const resp = await apiTMDB.post(`/3/account/21129846/watchlist`, {
       media_type: "movie",
@@ -68,7 +68,7 @@ const addToWatchList = async (movieId) => {
   }
 };
 
-const removeFromWatchList = async (movieId) => {
+const removeFromWatchList = async (movieId: number) => {
   try {
     const resp = await apiTMDB.post(`/3/account/21129846/watchlist`, {
       media_type: "movie",

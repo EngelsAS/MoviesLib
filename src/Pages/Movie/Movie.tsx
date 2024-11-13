@@ -10,11 +10,13 @@ import UserService from "../../services/UserService";
 import { MovieType } from "../../types/MovieType";
 
 const Movie = () => {
-  const [movie, setMovie] = useState<MovieType>();
+  const [movie, setMovie] = useState<MovieType | undefined>();
   const { id: movieId } = useParams();
 
   const fetchMovieDetails = async () => {
-    const data = await FilmsService.getMovieDetails(movieId);
+    const data = await FilmsService.getMovieDetails(
+      parseInt(movieId as string)
+    );
 
     if (data) {
       setMovie(data);
@@ -30,7 +32,7 @@ const Movie = () => {
   }, [movieId]);
 
   const addToWatchList = async () => {
-    toast.promise(UserService.addToWatchList(movie?.id), {
+    toast.promise(UserService.addToWatchList((movie as MovieType).id), {
       pending: "Adicionando à Watch List",
       success: "Filme adicionado à Watch List",
       error: "Erro ao adicionar filme à Watch List",

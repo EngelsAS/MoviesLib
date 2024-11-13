@@ -6,16 +6,19 @@ import Categoria from "../../Components/Categoria";
 import styles from "./Search.module.css";
 import { useMemo } from "react";
 import { searchMovies } from "../../slices/searchMoviesSlice";
+import { RootState } from "../../types/StoreTypes";
 
 const Search = () => {
-  const { movies, total_pages, page } = useSelector(
-    (state) => state.searchMovies
-  );
+  const {
+    movies,
+    total_pages,
+    page,
+    loading: searchLoading,
+  } = useSelector((state: RootState) => state.searchMovies);
   const dispatch = useDispatch();
   const location = useLocation();
   const urlParams = new URLSearchParams(location.search);
   const query = urlParams.get("q");
-  const { loading: searchLoading } = useSelector((state) => state.searchMovies);
   const arrayTotalPages = useMemo(() => {
     let array = [];
 
@@ -46,7 +49,7 @@ const Search = () => {
           <span
             onClick={() => dispatch(searchMovies({ query, page: item }))}
             key={item}
-            style={page === item ? { border: "1px solid #E2B616" } : null}
+            style={page === item ? { border: "1px solid #E2B616" } : undefined}
           >
             {item}
           </span>

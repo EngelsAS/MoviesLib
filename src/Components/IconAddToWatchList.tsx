@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import styles from "./IconAddToWatchList.module.css";
 
-const IconAddToWatchList = ({ onClick }) => {
+const IconAddToWatchList = ({ onClick }: { onClick: () => void }) => {
   return (
     <div className={styles.container}>
       <div style={{ position: "relative" }} onClick={onClick}>

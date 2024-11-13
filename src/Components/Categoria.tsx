@@ -1,6 +1,11 @@
 import styles from "./Categoria.module.css";
 
-const Categoria = ({ titulo, subtitulo }) => {
+interface IProps {
+  titulo: string;
+  subtitulo?: string | undefined;
+}
+
+const Categoria = ({ titulo, subtitulo }: IProps) => {
   return (
     <div>
       <h2 className={styles.categoria_titulo}>

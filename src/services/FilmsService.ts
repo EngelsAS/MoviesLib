@@ -26,7 +26,7 @@ const getPopularMovies = async () => {
   }
 };
 
-const searchMovies = async (query, page) => {
+const searchMovies = async (query: string, page: number) => {
   const searchMoviesURL = import.meta.env.VITE_API_SEARCH_MOVIES;
 
   const url = page
@@ -56,7 +56,7 @@ const getUpcomingMovies = async () => {
   }
 };
 
-const getMovieDetails = async (movieId) => {
+const getMovieDetails = async (movieId: number) => {
   try {
     const resp = await apiTMDB.get(`3/movie/${movieId}`);
     console.log(resp.data);

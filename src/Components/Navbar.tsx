@@ -4,12 +4,15 @@ import { Icon } from "@iconify/react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { searchMovies } from "../slices/searchMoviesSlice";
+import { RootState } from "../types/StoreTypes";
 // import UserService from "../services/UserService";
 // import { loginUser } from "../slices/userSlice";
 
 const Navbar = () => {
   const dispatch = useDispatch();
-  const { loading: loadingQuery } = useSelector((state) => state.searchMovies);
+  const { loading: loadingQuery } = useSelector(
+    (state: RootState) => state.searchMovies
+  );
   const navigate = useNavigate();
   const location = useLocation();
   const [query, setQuery] = useState("");

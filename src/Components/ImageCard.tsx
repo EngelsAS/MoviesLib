@@ -5,9 +5,17 @@ import { useSelector } from "react-redux";
 import UserService from "../services/UserService";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { MovieType } from "../types/MovieType";
+import { RootState } from "../types/StoreTypes";
 
-const ImageCard = ({ movie, toRemove, removeFunction }) => {
-  const user = useSelector((state) => state.user);
+interface IProps {
+  movie: MovieType;
+  toRemove: boolean;
+  removeFunction: () => void;
+}
+
+const ImageCard = ({ movie, toRemove, removeFunction }: IProps) => {
+  const user = useSelector((state: RootState) => state.user);
 
   const addToWatchList = async () => {
     console.log(user.sessionId, movie.id);

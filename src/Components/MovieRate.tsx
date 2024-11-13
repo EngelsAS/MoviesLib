@@ -1,7 +1,13 @@
 import { Icon } from "@iconify/react";
 import styles from "./MovieRate.module.css";
+import { MovieType } from "../types/MovieType";
 
-const MovieRate = ({ movie, width }) => {
+interface IProps {
+  movie: MovieType;
+  width: number;
+}
+
+const MovieRate = ({ movie, width }: IProps) => {
   return (
     <div className={styles.rate_div}>
       <Icon icon="ic:round-star" style={{ color: "#F5C518" }} width={width} />

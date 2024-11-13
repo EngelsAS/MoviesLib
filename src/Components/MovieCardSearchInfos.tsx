@@ -1,8 +1,9 @@
+import { MovieType } from "../types/MovieType";
 import styles from "./MovieCardSearchInfos.module.css";
 import MovieRate from "./MovieRate";
 import { Icon } from "@iconify/react";
 
-const MovieCardSearchInfos = ({ movie }) => {
+const MovieCardSearchInfos = ({ movie }: { movie: MovieType }) => {
   return (
     <div className={styles.movie_card_div}>
       {movie.poster_path ? (
