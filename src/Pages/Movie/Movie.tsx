@@ -7,9 +7,10 @@ import Pill from "../../Components/Pill";
 import IconAddToWatchList from "../../Components/IconAddToWatchList";
 import { toast } from "react-toastify";
 import UserService from "../../services/UserService";
+import { MovieType } from "../../types/MovieType";
 
 const Movie = () => {
-  const [movie, setMovie] = useState(null);
+  const [movie, setMovie] = useState<MovieType>();
   const { id: movieId } = useParams();
 
   const fetchMovieDetails = async () => {
@@ -29,7 +30,7 @@ const Movie = () => {
   }, [movieId]);
 
   const addToWatchList = async () => {
-    toast.promise(UserService.addToWatchList(movie.id), {
+    toast.promise(UserService.addToWatchList(movie?.id), {
       pending: "Adicionando à Watch List",
       success: "Filme adicionado à Watch List",
       error: "Erro ao adicionar filme à Watch List",
@@ -57,7 +58,7 @@ const Movie = () => {
                     />
                     <div className={styles.movie_score_infos}>
                       <p>
-                        {movie.vote_average}
+                        {movie.vote_average.toFixed(1)}
                         <span style={{ color: "#B8C1C2", fontSize: "12px" }}>
                           /10
                         </span>
